@@ -45,7 +45,9 @@
         name = document.getElementById("orgname").value;
         num = document.getElementById("num").value;
         oldest = document.getElementById("oldest").value;
-     
+        console.log("hi", name, num, oldest);
+
+
         fetch('https://api.github.com/users/'+name +'/repos')
         .then(function (response) {
         return response.json();
