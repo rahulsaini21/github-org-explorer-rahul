@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCS</title>
+    <link rel="stylesheet" href="css/styles.css" >
+
+
+    <h1>GitHub Organisations Explorer</h1>
+</head>
+<body>
+
+
+
+    <form class="form" name="" id="form-input">
+        <table class="table">
+            <tr>
+                <th>Organisations</th>
+                <th>N (Top repos)</th>
+                <th>M (Oldest Forks)</th>
+            </tr>
+            <tr>
+                <td><input type="name" id="orgname" placeholder="Organisations"></td>
+                <td><input type="number" id="num" placeholder="10"></td>
+                <td><input type="number" id="oldest" placeholder="0"></td>
+            </tr>
+        </table>
+        <button class="btn" onclick="fn1()">Fetch</button>
+    </form>
+
+
+<!-- 
+
+
+ -->
+
+    <p id = "data"></p>
+ <script type="text/javascript">
+     
+     
+     function fn1(){
+        document.getElementById("data").innerHTML = "";
+        name = document.getElementById("orgname").value;
+        num = document.getElementById("num").value;
+        oldest = document.getElementById("oldest").value;
+        console.log("hi", name, num, oldest);
+        alert('https://api.github.com/users/'+name +'/repos');
+
+
+        fetch('https://api.github.com/users/'+name +'/repos')
+        .then(function (response) {
+        return response.json();
+        })
+        .then(function(data){
+        function compare(a,b){
+            var forka = a.forks_count
+            var forkb = b.forks_count
+            return forkb-forka
+        }
+
+        return data.sort(compare)
+        })
+        .then(function (data) {
+         for(var i=0; i<num; i++){
+             document.getElementById("data").innerHTML +=
+             "<div class = 'accordions'>" +
+             "<section class='section' id ='item'" + i.toString() + ">" +
+                "<a class='heading' href='#item'" + i.toString()+ ">" + data[i].name + "</a>" +
+                "<div class='container'>"+
+                    "<p class='link'>" + "<a href="+ data[i].html_url + ">" +"</a>"+"</p>"+
+                    "<p class='discription'>" + data[i].description +"</p>" +
+                    "<p class='forks'>"+ "Forks_count:" + "&nbsp; &nbsp; &nbsp;" +data[i].forks_count + "</p>" +
+                "</div>" +
+             "</section>" +
+             "</div>"
+            
+         }
+        
+     })
+     }
+ </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+</body>
+</html>

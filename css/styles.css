@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+h1 {
+    margin: 0 0 3% 0;
+    padding: 10px 0 10px 0;
+    color: white;
+    background-color: cornflowerblue;
+    text-align: center;
+}
+
+body {
+    margin: 0%;
+}
+
+.table {
+    text-align: left;
+    display: inline-block;
+}
+th {
+    padding: 5px 10px 0 0;
+}
+td {
+    padding: 5px 10px 0 0;
+}
+
+.btn {
+    width: 80px;
+    height: 30px;
+    margin: 23px 0 0 40px;
+    background-color: #00f;
+    /* border: soild 1px #00f; */
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+form {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+/*  */
+/* .accordion {
+    margin-top: 50px;
+} */
+
+.item {
+    display: flex;
+}
+
+.heading {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:80%;
+    margin:auto;
+    height: 40px;
+    background: #cccccc;
+    font-size: 20px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+}
+
+.accordion section p {
+    display: none;
+    text-align: center;
+}
+
+.accordion section target p {
+    display: block;
+}
+
+.container {
+    margin: 10px 0 30px 10%;
+}
+
+.section {
+    margin-top: 50px;
+}
